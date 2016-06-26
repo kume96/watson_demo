@@ -1,0 +1,25 @@
+%h1 Listing voice_categories
+
+%table
+  %thead
+    %tr
+      %th Start time
+      %th End time
+      %th Category
+      %th
+      %th
+      %th
+
+  %tbody
+    - @voice_categories.each do |voice_category|
+      %tr
+        %td= voice_category.start_time
+        %td= voice_category.end_time
+        %td= voice_category.category
+        %td= link_to 'Show', voice_category
+        %td= link_to 'Edit', edit_voice_category_path(voice_category)
+        %td= link_to 'Destroy', voice_category, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Voice category', new_voice_category_path

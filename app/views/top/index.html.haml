@@ -1,0 +1,176 @@
+.container#main
+  .video-container
+    .video-chart
+      .video-left
+        .video
+          = video_tag(["watson demo2.mp4"] , :controls => true, :id => "video", :autoplay => true,preload: true)
+        .progress-bar-container
+          #mayuyu-baloon.arrow_box
+            = image_tag("sight_recognition.png")
+            顔認識：渡辺 麻友
+          .progress-bar
+            #progress-bar-bar
+            #mayuyu
+      .video-right
+        .voice_category
+          .voice_category-title
+            = image_tag("voice_category.png")
+            自然言語分類
+          %canvas{id: "voice_category_2", height: "50%", width: "50%"}
+        .voice_keyword
+          = image_tag("voice_keyword.png")
+          抽出キーワード
+          .voice_keyword_body
+            - @voice_keyword_json_data.each_with_index do |keyword, i|
+              %div{class: "voice_keyword_col #{i + 1 == @voice_keyword_json_data.count ? "last" : ""}"}
+                .voice_keyword_sec
+                  #{keyword["start_time"]}秒 〜
+                  = "#{@voice_keyword_json_data[i + 1]["start_time"]}秒" unless i + 1 == @voice_keyword_json_data.count
+                .voice_keyword_keyword
+                  - keyword["data"].each do |k|
+                    = k
+                    %br
+            .clear
+      .clear
+      .object_recognition
+        .object_recognition-title
+          = image_tag("object_recognition.png")
+          一般物体認識
+        .bar
+        %canvas{id: "object_recognition", height: "200", width: "500"}
+
+:javascript
+  function init(){
+    mVideo = document.getElementById("video");
+    mVideo.addEventListener("timeupdate", function() {
+      $('.bar').css('display',"block");
+      var now = mVideo.currentTime;
+      var all = mVideo.duration;
+      width = 1039 / all;
+      progress = 55 + width * now;
+      $('#now').html('現在の再生時間：' + now + 's');
+      $('#all').html('合計時間：' + all + 's');
+      $('.bar').css('left',progress + "px");
+      $('#progress-bar-bar').css('width',(100.0 / 95) * now + '%');
+    }, true);
+  };
+  $(function(){
+    init();
+  });
+  function displayLineChart() {
+    var randomColorFactor = function() {
+        return Math.round(Math.random() * 255);
+    };
+    var randomColor = function(opacity) {
+        return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',' + (opacity || '.3') + ')';
+    };
+
+    var object_recognition_data = {
+        labels: #{JSON.dump(@object_recognition_label_count)},
+        datasets: #{JSON.dump(@object_recognition_datasets)}
+    };
+
+      var voice_category_2_data = {
+        labels: #{JSON.dump(@voice_category_label_2)},
+        datasets: #{JSON.dump(@voice_category_datasets)}
+    };
+
+
+    var object_recognition_ctx = document.getElementById("object_recognition").getContext("2d");
+
+    var voice_category_2_ctx = document.getElementById("voice_category_2").getContext("2d");
+    voice_category_2_ctx.canvas.width = 500;
+    voice_category_2_ctx.canvas.height = 220;
+    var object_recognition_options = {
+                responsive: true,
+                legend: {
+                    position: 'top',
+                },
+                hover: {
+                    mode: 'label'
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: ''
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '確信度'
+                        }
+                    }]
+                },
+                title: {
+                    display: true,
+                    text: ""
+                }
+            }
+
+    var voice_category_2_options = {
+                responsive: true,
+                legend: {
+                    position: 'top',
+                },
+                hover: {
+                    mode: 'label'
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        stacked: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: ''
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        stacked: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '可能性'
+                        }
+                    }]
+                },
+                title: {
+                    display: true,
+                    text: ''
+                }
+            }
+
+    $.each(object_recognition_data.datasets, function(i, dataset) {
+      var background = randomColor(0.5);
+      dataset.lineTension = 0;
+      dataset.borderColor = background;
+      dataset.backgroundColor = "rgba(0,0,0,0)";
+      dataset.pointBorderColor = background;
+      dataset.pointBackgroundColor = background;
+      dataset.pointBorderWidth = 1;
+    });
+
+    $.each(voice_category_2_data.datasets, function(i, dataset) {
+      var background = randomColor(0.5);
+      dataset.borderColor = background;
+      dataset.backgroundColor = background;
+      dataset.borderWidth = 1;
+    });
+
+
+    var object_recognition = new Chart(object_recognition_ctx , {
+        type: "line",
+        options: object_recognition_options,
+        data: object_recognition_data
+    });
+
+    var voice_category_2 = new Chart(voice_category_2_ctx , {
+        type: "bar",
+        options: voice_category_2_options,
+        data: voice_category_2_data
+    });
+  }
+

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Time:
+  = @voice_keyword.time
+%p
+  %b Keyword:
+  = @voice_keyword.keyword
+
+= link_to 'Edit', edit_voice_keyword_path(@voice_keyword)
+\|
+= link_to 'Back', voice_keywords_path

@@ -1,0 +1,16 @@
+= form_for @voice_keyword do |f|
+  - if @voice_keyword.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@voice_keyword.errors.count, "error")} prohibited this voice_keyword from being saved:"
+      %ul
+        - @voice_keyword.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :time
+    = f.text_field :time
+  .field
+    = f.label :keyword
+    = f.text_field :keyword
+  .actions
+    = f.submit 'Save'

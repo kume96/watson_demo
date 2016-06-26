@@ -1,0 +1,208 @@
+// Place all the styles related to the top controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin transform( $transform ) {
+  transform: $transform ;
+  // Firefox
+  -moz-transform: $transform ;
+  // Safari, Google Chrome
+  -webkit-transform: $transform ;
+  // Opera
+  -o-transform: $transform ;
+  // Internet Explorer
+  -ms-transform: $transform ;
+}
+
+.clear{
+  float: none;
+  clear: both;
+}
+html, body{
+  height: 100%;
+}
+#header{
+  padding: 30px 0;
+  background-color: #dc954e;
+  color: #efefef;
+  font-size: 40px;
+  width: 100%;
+}
+
+#main{
+  margin: auto;
+  height: 100%;
+    height: 100%;
+
+  .video-container{
+    padding: 20px 20px;
+    height: 100%;
+    .video-chart{
+      .video-left{
+        margin-right: 5%;
+        width: 50%;
+        float: left;
+        .video{
+          widows: 100%;
+          video{
+            width: 100%;
+          }
+        }
+        .progress-bar-container{
+          width: 100%;
+          position: relative;
+          margin-top: 10px;
+          padding-bottom: 50px;
+          #mayuyu-baloon{
+            left: 70.5% !important;
+            top: 20px !important;
+            @include transform(translateX(-50%));
+            width: 300px;
+            text-align: center;
+            img{
+              height: 55px;
+            }
+          }
+          .progress-bar{
+            width: 100%;
+            height: 10px;
+            border: 0px solid rgba(190,238,178,0.7);
+            content: "";
+            background-color: #fff;
+            overflow-x: hidden;
+            position: relative;
+            #progress-bar-bar{
+              position: absolute;
+              content: "";
+              top: 0;
+              left: 0;
+              height: 100%;
+              width: 0;
+              background-color: rgba(163,183,248,0.4);
+            }
+            #mayuyu{
+              position: absolute;
+              top: 2px;
+              left: 70.5%;
+              width: 6px;
+              height: 6px;
+              border-radius: 3px;
+              border: 1px solid rgba(158,136,219,0.8);
+              background-color: rgba(107,100,176,1.0);
+              @include transform(translateX(-50%));
+            }
+          }
+        }
+      }
+      .video-right{
+        width: 45%;
+        float: left;
+        .voice_category{
+          position: relative;
+          width: 100%;
+          .voice_category-title{
+            position: absolute;
+            top: -15px;
+            right: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            img{
+              height: 55px;
+            }
+          }
+        }
+        .voice_keyword{
+          width: 100%;
+          text-align: center;
+          img{
+            width: 55px;
+          }
+          .voice_keyword_body{
+            text-align: left;
+            width: 100%;
+            border: 1px solid #ccc;
+            background-color: #eee;
+            height: 165px;
+            .voice_keyword_col{
+              width: 33.3%;
+              float: left;
+              height: 100%;
+              border-right: 1px solid #000;
+              &.last{
+                border-right: none;
+              }
+              .voice_keyword_sec{
+                border-bottom: 1px solid #000;
+                padding: 5px 5px;
+              }
+              .voice_keyword_keyword{
+                padding: 5px 5px;
+              }
+            }
+          }
+        }
+      }
+      .object_recognition{
+        position: relative;
+        margin-top: 30px;
+        .object_recognition-title{
+          position: absolute;
+          top: -16px;
+          left: 0;
+          right: 0;
+          width: 100%;
+          text-align: center;
+          img{
+            height: 55px;
+          }
+        }
+        .bar{
+          height: 260px;
+        }
+      }
+    }
+  }
+}
+
+
+
+#menu div {
+  position: relative;
+}
+
+.arrow_box {
+  position: absolute;
+  padding: 5px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  background: #32d0b6;
+  color: #fff;
+}
+
+.arrow_box:after {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -10px;
+  border: solid transparent;
+  border-color: rgba(51, 51, 51, 0);
+  border-bottom-color: #32d0b6;
+  border-width: 10px;
+  pointer-events: none;
+  content: " ";
+}
+
+
+.bar{
+  position: absolute;
+  display: none;
+  bottom: 55px;
+  width: 3px;
+  content: "";
+  background-color: #000;
+}
+

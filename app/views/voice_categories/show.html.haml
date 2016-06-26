@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Start time:
+  = @voice_category.start_time
+%p
+  %b End time:
+  = @voice_category.end_time
+%p
+  %b Category:
+  = @voice_category.category
+
+= link_to 'Edit', edit_voice_category_path(@voice_category)
+\|
+= link_to 'Back', voice_categories_path

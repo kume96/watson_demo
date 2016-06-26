@@ -1,0 +1,23 @@
+%h1 Listing voice_keywords
+
+%table
+  %thead
+    %tr
+      %th Time
+      %th Keyword
+      %th
+      %th
+      %th
+
+  %tbody
+    - @voice_keywords.each do |voice_keyword|
+      %tr
+        %td= voice_keyword.time
+        %td= voice_keyword.keyword
+        %td= link_to 'Show', voice_keyword
+        %td= link_to 'Edit', edit_voice_keyword_path(voice_keyword)
+        %td= link_to 'Destroy', voice_keyword, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Voice keyword', new_voice_keyword_path
