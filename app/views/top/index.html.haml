@@ -1,5 +1,12 @@
 #header.item
   .video
+    .cm
+      #cm1
+        = image_tag("cm1.jpg")
+      #cm2
+        = image_tag("cm2.png")
+      #cm3
+        = image_tag("cm3.jpg")
     = video_tag(["watson demo2.mp4"] , :controls => true, :id => "video", :autoplay => true,preload: true)
 #middle.item.container
   .voice_keyword
@@ -23,7 +30,7 @@
       .col-sm-3
         = image_tag("voice_category.png")
         %span.voice_category_label
-          文脈カテゴリ
+          話題カテゴリ
       .col-sm-9
         .bar
         %canvas{id: "voice_category_2", height: "50%", width: "50%"}
@@ -32,13 +39,13 @@
       .col-sm-3
         = image_tag("sight_recognition.png")
         %span.progress-bar-container_label
-          画像認識(人物認識)
+          人物認識
       .col-sm-9
         %canvas{id: "human", height: "50%", width: "50%"}
         .bar
         .data-container
           .row
-            .col-sm-push-8.col-sm-4
+            .col-sm-push-7.col-sm-2
               渡辺麻友
   .object_recognition
     .row
@@ -62,6 +69,25 @@
       $('#all').html('合計時間：' + all + 's');
       $('.bar').css('left',progress + "%");
       $('#progress-bar-bar').css('width',(100.0 / all) * now + '%');
+      if(now > 10 && now < 20){
+        console.log("aaaa");
+        $('#cm1').css('display','block');
+        $('#cm2').css('display','none');
+        $('#cm3').css('display','none');
+      }else if(now > 45 && now < 55){
+        $('#cm1').css('display','none');
+        $('#cm2').css('display','block');
+        $('#cm3').css('display','none');
+      }else if(now > 80 && now < 90){
+        $('#cm1').css('display','none');
+        $('#cm2').css('display','none');
+        $('#cm3').css('display','block');
+      }else{
+        console.log("pre");
+        $('#cm1').css('display','none');
+        $('#cm2').css('display','none');
+        $('#cm3').css('display','none');
+      }
     }, true);
   };
   $(function(){

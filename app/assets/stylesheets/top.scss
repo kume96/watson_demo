@@ -42,18 +42,46 @@ body, .item {
 }
 
 #header {
-  background-color: #ccc;
+  background-color: #000;
   height: 400px;
   margin-top: -400px;
   padding: 5px;
-  padding-top: 30px;
+  padding-top: 15px;
   .video{
     background-color: black;
     width: 600px;
     margin: auto;
+    position: relative;
+    overflow: hidden;
+    .cm{
+      position: absolute;
+      bottom: 35px;
+      width: 60%;
+      margin: auto;
+      left: 0;
+      right: 0;
+      #cm1{
+        display: none;
+      }
+      #cm2{
+        display: none;
+      }
+      #cm3{
+        display: none;
+      }
+      img{
+        width: 100%;
+      }
+    }
     video{
       width: 100%;
       margin: auto;
+    }
+    #scene1,#scene2,#scene3{
+      float: left;
+      margin-right: 20px;
+      padding: 5px;
+      background-color: #eee;
     }
   }
 }
@@ -245,7 +273,9 @@ body, .item {
   pointer-events: none;
   content: " ";
 }
-
+.col-sm-2{
+  text-align: center;
+}
 
 .bar{
   position: absolute;
