@@ -63,12 +63,28 @@ body, .item {
       height: 80px;
     }
   }
+  .col-sm-9{
+    position: relative;
+    .data-container{
+      position: absolute;
+      width: 85%;
+      right: 5%;
+      top: 10px;
+      text-align: left;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
   .progress-bar-container{
     padding: 20px 0;
     width: 100%;
     position: relative;
     margin-top: 10px;
     padding-bottom: 50px;
+    .bar{
+      height: 142px;
+      top: 0;
+    }
     #mayuyu-baloon{
       left: 70% !important;
       top: 60px !important;
@@ -114,6 +130,10 @@ body, .item {
     padding: 20px 0;
     position: relative;
     margin: auto;
+    .bar{
+      height: 137px;
+      top: 30px;
+    }
     .voice_category-title{
       position: absolute;
       top: -15px;
@@ -130,6 +150,10 @@ body, .item {
     padding: 20px 0;
     width: 100%;
     text-align: center;
+    .bar{
+      height: 142px;
+      top: 0;
+    }
     .voice_keyword_body{
       text-align: left;
       width: 100%;
@@ -170,6 +194,7 @@ body, .item {
     }
     .bar{
       height: 165px;
+      top: 0;
     }
   }
 }
@@ -211,9 +236,9 @@ body, .item {
 .bar{
   position: absolute;
   display: none;
-  bottom: 55px;
   width: 3px;
   content: "";
   background-color: #000;
+  height: 100px;
 }
 
