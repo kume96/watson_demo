@@ -6,7 +6,8 @@
     .row
       .col-sm-3
         = image_tag("voice_keyword.png")
-        抽出キーワード
+        %span.voice_keyword_label
+          音声キーワード
       .col-sm-9
         %canvas{id: "voice_keyword", height: "50%", width: "50%"}
         .bar
@@ -21,7 +22,8 @@
     .row
       .col-sm-3
         = image_tag("voice_category.png")
-        自然言語分類
+        %span.voice_category_label
+          文脈カテゴリ
       .col-sm-9
         .bar
         %canvas{id: "voice_category_2", height: "50%", width: "50%"}
@@ -29,7 +31,8 @@
     .row
       .col-sm-3
         = image_tag("sight_recognition.png")
-        画像認識
+        %span.progress-bar-container_label
+          画像認識(人物認識)
       .col-sm-9
         %canvas{id: "human", height: "50%", width: "50%"}
         .bar

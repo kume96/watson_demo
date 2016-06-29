@@ -37,6 +37,10 @@ body, .item {
   overflow: auto;
 }
 
+.container {
+  width: 1195px;
+}
+
 #header {
   background-color: #ccc;
   height: 400px;
@@ -44,6 +48,7 @@ body, .item {
   padding: 5px;
   padding-top: 30px;
   .video{
+    background-color: black;
     width: 600px;
     margin: auto;
     video{
@@ -81,6 +86,9 @@ body, .item {
     position: relative;
     margin-top: 10px;
     padding-bottom: 50px;
+    .progress-bar-container_label {
+      color: rgb(64, 210, 191);
+    }
     .bar{
       height: 142px;
       top: 0;
@@ -130,6 +138,9 @@ body, .item {
     padding: 20px 0;
     position: relative;
     margin: auto;
+    .voice_category_label {
+      color: rgb(88, 152, 227)
+    }
     .bar{
       height: 137px;
       top: 30px;
@@ -150,6 +161,9 @@ body, .item {
     padding: 20px 0;
     width: 100%;
     text-align: center;
+    .voice_keyword_label {
+      color: rgb(174, 114, 229);
+    }
     .bar{
       height: 142px;
       top: 0;
@@ -238,7 +252,7 @@ body, .item {
   display: none;
   width: 3px;
   content: "";
-  background-color: #000;
+  background-color: red;
   height: 100px;
 }
 
